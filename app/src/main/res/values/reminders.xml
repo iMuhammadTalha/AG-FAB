@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reminders">
+        <item>Water plants</item>
+        <item>Fertilize soil</item>
+        <item>Spray for pests</item>
+    </string-array>
+    <string name="select_reminder_prompt">Select a reminder</string>
+</resources>

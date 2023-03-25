@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_menu_weather"
+            android:title="@string/weather" />
+        <item
+            android:id="@+id/navigation"
+            android:icon="@drawable/ic_menu_market"
+            android:title="@string/market" />
+        <item
+            android:id="@+id/nav_reminder"
+            android:icon="@android:drawable/ic_popup_reminder"
+            android:title="@string/reminder" />
+        <item
+            android:id="@+id/nav_crop_health"
+            android:icon="@drawable/ic_menu_crop_health"
+            android:title="@string/crop_health" />
+
+        <item
+            android:id="@+id/nav_analysis"
+            android:icon="@drawable/ic_menu_analysis"
+            android:title="@string/analysis" />
+        <item
+            android:id="@+id/nav_instant"
+            android:icon="@drawable/ic_menu_instant"
+            android:title="@string/instant" />
+
+
+    </group>
+</menu>

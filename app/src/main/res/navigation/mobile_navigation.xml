@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    android:label="Chat"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.gui.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_input"-->
+    <!--        android:name="com.example.gui.ui.input.InputFragment"-->
+    <!--        android:label="@string/input_market"-->
+    <!--        tools:layout="@layout/fragment_input"/>-->
+
+    <fragment
+        android:id="@+id/nav_weather"
+        android:name="com.example.gui.ui.weather.WeatherFragment"
+        android:label="@string/weather"
+        tools:layout="@layout/fragment_weather" />
+
+    <fragment
+        android:id="@+id/nav_weather_station"
+        android:name="com.example.gui.WeatherStationFragment"
+        android:label="@string/weather_station"
+        tools:layout="@layout/fragment_weather_station" />
+
+    <fragment
+        android:id="@+id/nav_crop_health"
+        android:name="com.example.gui.ui.home.health.HealthFragment"
+        android:label="@string/crop_health"
+        tools:layout="@layout/fragment_health" />
+
+    <fragment
+        android:id="@+id/nav_reminder"
+        android:name="com.example.gui.ui.reminder.ReminderFragment"
+        android:label="@string/reminder"
+        tools:layout="@layout/fragment_reminder" />
+
+    <fragment
+        android:id="@+id/nav_analysis"
+        android:name="com.example.gui.ui.analysis.AnalysisFragment"
+        android:label="@string/analysis"
+        tools:layout="@layout/fragment_analysis" />
+
+    <fragment
+        android:id="@+id/nav_test"
+        android:name="com.example.gui.ui.input.InputFragment"
+        tools:label="test"
+        tools:layout="@layout/fragment_input" />
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/nav_market">
+        <activity
+            android:id="@+id/nav_market"
+            android:name="com.example.gui.MarketActivity"
+            android:label="@string/market"
+            tools:layout="@layout/activity_market" />
+    </navigation>
+    <fragment
+        android:id="@+id/nav_instant"
+        android:name="com.example.gui.InstantFragment"
+        android:label="@string/instant"
+        tools:layout="@layout/fragment_instant" />
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.example.gui.ChatFragment"
+        android:label="@string/chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.example.gui.NewsFragment"
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/nav_machinery"
+        android:name="com.example.gui.MachineryFragment"
+        android:label="@string/machinery"
+        tools:layout="@layout/fragment_machinery" />
+    <fragment
+        android:id="@+id/nav_video"
+        android:name="com.example.gui.VideoFragment"
+        android:label="@string/video"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/nav_harsh_weather"
+        android:name="com.example.gui.HarshWeatherFragment"
+        android:label="@string/harsh_weather"
+        tools:layout="@layout/fragment_harsh_weather" />
+
+
+</navigation>
