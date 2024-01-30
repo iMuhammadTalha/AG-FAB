@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="am_pm_values">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+    <string-array name="repeat_frequency_values">
+        <item>Never</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+</resources>
