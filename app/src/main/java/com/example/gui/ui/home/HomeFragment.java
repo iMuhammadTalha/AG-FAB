@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.example.gui.AlarmSettingActivity;
 import com.example.gui.MarketActivity;
 import com.example.gui.R;
 
@@ -61,9 +62,12 @@ public class HomeFragment extends Fragment {
         reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.nav_instant).navigate(R.id.nav_reminder);
+                Intent intent = new Intent(getActivity(), AlarmSettingActivity.class);
+                startActivity(intent);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
             }
         });
+
 
         analysis.setOnClickListener(new View.OnClickListener() {
             @Override

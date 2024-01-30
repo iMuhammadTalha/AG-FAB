@@ -16,6 +16,7 @@
         app:tabGravity="fill"
         app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/white"
         app:tabIndicatorGravity="stretch"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white" />

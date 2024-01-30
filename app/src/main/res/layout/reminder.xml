@@ -1,137 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Time"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTime"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/editTextDate"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:text="Reminder:" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <Spinner
+        android:id="@+id/reminderSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="145dp" />
+        android:text="Time:" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <NumberPicker
+            android:id="@+id/hourPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="12"
+            android:min="1" />
+
+        <NumberPicker
+            android:id="@+id/minutePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="59"
+            android:min="0" />
+
+        <Spinner
+            android:id="@+id/amPmPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/am_pm_values" />
+
+    </LinearLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        android:text="Repeat:" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right"
+    <CheckBox
+        android:id="@+id/repeatOnceCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.7" />
+        android:text="Repeat Once" />
+
+    <Spinner
+        android:id="@+id/repeatFrequencySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/repeat_frequency_values" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vibrate:" />
+
+    <Switch
+        android:id="@+id/vibrateSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete After:" />
+
+    <Switch
+        android:id="@+id/deleteSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Label:" />
+
+    <CheckBox
+        android:id="@+id/vibrateCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repeatOnceCheckBox"
+        android:layout_alignParentStart="true"
+        android:text="Vibrate" />
+
+    <CheckBox
+        android:id="@+id/deleteAfterCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repeatOnceCheckBox"
+        android:layout_toEndOf="@+id/vibrateCheckBox"
+        android:text="Delete After" />
+
+    <EditText
+        android:id="@+id/labelEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vibrateCheckBox"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:hint="Label" />
 
     <Button
-        android:id="@+id/submit"
-        android:layout_width="99dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="156dp"
-        android:background="@drawable/sign_button"
-        android:text="submit"
-        app:layout_constraintDimensionRatio="4:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fertilizer" />
+        android:id="@+id/setAlarmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelEditText"
+        android:layout_centerHorizontal="true"
+        android:text="Set Alarm" />
 
-
-    <Button
-        android:id="@+id/irrigation"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="12dp"
-        android:background="#00000000"
-        android:backgroundTint="@color/white"
-        android:foreground="@drawable/ic_menu_irrigation"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toStartOf="@+id/fertilizer"
-        app:layout_constraintHorizontal_bias="0.228"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <Button
-        android:id="@+id/pesticide"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:background="#00000000"
-        android:backgroundTint="@color/white"
-        android:foreground="@drawable/ic_menu_pesticide"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/right"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <Button
-        android:id="@+id/fertilizer"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="12dp"
-        android:background="#00000000"
-        android:backgroundTint="@color/white"
-        android:foreground="@drawable/ic_menu_fertilizer"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintStart_toStartOf="@+id/left"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,77 +1,104 @@
 package com.example.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.app.TimePickerDialog;
+import android.app.DatePickerDialog;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.NumberPicker;
-import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.util.Calendar;
 
 public class AlarmSettingActivity extends AppCompatActivity {
 
-    private NumberPicker hourPicker;
-    private NumberPicker minutePicker;
-    private Spinner amPmPicker;
-    private Button setAlarmButton;
-    private String[] reminders = {"Water plants", "Fertilize soil", "Spray insecticide"};
+    private Button editTextTime, editTextDate, irrigationBtn, pesticideBtn, fertilizerBtn, submitBtn, currentlySelectedBtn;
+    private int selectedHour, selectedMinute, selectedDay, selectedMonth, selectedYear;
+    private String selectedReminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_setting);
 
-        // Find the NumberPicker and Spinner views in the layout file
-        hourPicker = findViewById(R.id.hourPicker);
-        minutePicker = findViewById(R.id.minutePicker);
-        amPmPicker = findViewById(R.id.amPmPicker);
+        editTextTime = findViewById(R.id.editTextTime);
+        editTextDate = findViewById(R.id.editTextDate);
+        irrigationBtn = findViewById(R.id.irrigation);
+        pesticideBtn = findViewById(R.id.pesticide);
+        fertilizerBtn = findViewById(R.id.fertilizer);
+        submitBtn = findViewById(R.id.submit);
 
-        // Configure the NumberPicker and Spinner views
-        hourPicker.setMinValue(1);
-        hourPicker.setMaxValue(12);
-        minutePicker.setMinValue(0);
-        minutePicker.setMaxValue(59);
-        amPmPicker.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
-                new String[]{"AM", "PM"}));
+        final Calendar c = Calendar.getInstance();
 
-        // Find the "Set Alarm" button and set its OnClickListener
-        setAlarmButton = findViewById(R.id.setAlarmButton);
-        setAlarmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get the selected reminder and time values
-                String reminder = reminders[amPmPicker.getSelectedItemPosition()];
-                int hour = hourPicker.getValue();
-                int minute = minutePicker.getValue();
-                String amPm = (String) amPmPicker.getSelectedItem();
-                // Create a new alarm with the selected reminder and time
-                Alarm newAlarm = new Alarm(reminder, hour, minute, amPm);
+        // Time selection
+        editTextTime.setOnClickListener(v -> {
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
 
-                // TODO: Save the new alarm to persistent storage
-
-                // Show a toast message to confirm that the alarm was set
-                String toastText = String.format("Alarm set for %d:%02d %s with reminder: %s",
-                        hour, minute, amPm, reminder);
-                Toast.makeText(AlarmSettingActivity.this, toastText, Toast.LENGTH_SHORT).show();
-            }
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    (view, hourOfDay, minutes) -> {
+                        selectedHour = hourOfDay;
+                        selectedMinute = minutes;
+                        editTextTime.setText(String.format("%02d:%02d", hourOfDay, minutes));
+                    }, hour, minute, false);
+            timePickerDialog.show();
         });
 
+        // Date selection
+        editTextDate.setOnClickListener(v -> {
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
 
-// Set the initial values for the hour and minute pickers
-        Calendar calendar = Calendar.getInstance();
-        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
-        int hour = hourOfDay > 12 ? hourOfDay - 12 : hourOfDay;
-        int minute = calendar.get(Calendar.MINUTE);
-        hourPicker.setValue(hour);
-        minutePicker.setValue(minute);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    (view, year1, monthOfYear, dayOfMonth) -> {
+                        selectedDay = dayOfMonth;
+                        selectedMonth = monthOfYear;
+                        selectedYear = year1;
+                        editTextDate.setText(String.format("%04d-%02d-%02d", year1, monthOfYear + 1, dayOfMonth));
+                    }, year, month, day);
+            datePickerDialog.show();
+        });
 
-// Set the initial selection for the AM/PM picker based on the current time
-        int amPm = calendar.get(Calendar.AM_PM);
-        amPmPicker.setSelection(amPm);
+        View.OnClickListener reminderButtonClickListener = v -> {
+            // Reset the previously selected button's appearance
+            if (currentlySelectedBtn != null) {
+                currentlySelectedBtn.setBackgroundColor(0x00000000);  // transparent
+            }
 
+            // Update the selected button's appearance
+            Button selectedButton = (Button) v;
+            selectedButton.setBackgroundColor(0xFF000000);  // translucent gray
+
+            // Store the current button as the "selected" button
+            currentlySelectedBtn = selectedButton;
+
+            // Update the reminder text based on the selected button
+            switch (v.getId()) {
+                case R.id.irrigation:
+                    selectedReminder = "Water plants";
+                    break;
+                case R.id.pesticide:
+                    selectedReminder = "Spray insecticide";
+                    break;
+                case R.id.fertilizer:
+                    selectedReminder = "Fertilize soil";
+                    break;
+            }
+        };
+
+        irrigationBtn.setOnClickListener(reminderButtonClickListener);
+        pesticideBtn.setOnClickListener(reminderButtonClickListener);
+        fertilizerBtn.setOnClickListener(reminderButtonClickListener);
+
+        // Submission
+        submitBtn.setOnClickListener(v -> {
+            if (selectedReminder == null || editTextTime.getText().equals("Select Time") || editTextDate.getText().equals("Select Date")) {
+                Toast.makeText(AlarmSettingActivity.this, "Please select all the options before submitting.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String details = String.format("Reminder: %s\nTime: %s\nDate: %s", selectedReminder, editTextTime.getText(), editTextDate.getText());
+            Toast.makeText(AlarmSettingActivity.this, details, Toast.LENGTH_LONG).show();
+        });
     }
 }

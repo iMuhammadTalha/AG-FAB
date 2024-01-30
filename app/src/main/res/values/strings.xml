@@ -12,6 +12,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_login">Login</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
@@ -41,4 +42,25 @@
     <string name="weather_station">"Weather Station"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="country_prompt">Country</string>
+    <string name="mobile_prompt">Mobile Number</string>
+    <string-array name="countries">
+        <item>USA</item>
+        <item>Canada</item>
+        <item>UK</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Japan</item>
+    </string-array>
+
+    <string name="city_prompt">City</string>
+    <string-array name="cities">
+        <item>New York</item>
+        <item>Los Angeles</item>
+        <item>Toronto</item>
+        <item>Paris</item>
+        <item>Berlin</item>
+        <item>Tokyo</item>
+    </string-array>
+
 </resources>

@@ -14,10 +14,11 @@
         android:id="@+id/username"
         android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:hint="@string/prompt_email"
+        android:hint="@string/prompt_username"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
@@ -25,30 +26,30 @@
         android:id="@+id/password"
         android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteY="307dp" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_background_selector"
         android:enabled="false"
         android:text="@string/action_sign_up"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -92,7 +93,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -132,5 +136,49 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/login"
         app:layout_constraintVertical_bias="0.233" />
+
+    <EditText
+        android:id="@+id/email_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email (optional)"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/city_edittext" />
+
+    <EditText
+        android:id="@+id/country_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/country_prompt"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/mobile_edittext" />
+
+    <EditText
+        android:id="@+id/city_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/city_prompt"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/country_edittext" />
+
+    <EditText
+        android:id="@+id/mobile_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/mobile_prompt"
+        android:inputType="phone"
+
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

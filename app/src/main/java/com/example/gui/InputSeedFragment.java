@@ -81,27 +81,27 @@ public class InputSeedFragment extends Fragment {
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(map1.getVisibility()==View.VISIBLE){
-                    map1.setVisibility(View.GONE);
-                } else {map1.setVisibility(View.VISIBLE);}
+                map1.setVisibility(map1.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+                map2.setVisibility(View.GONE);
+                map3.setVisibility(View.GONE);
             }
         });
 
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(map2.getVisibility()==View.VISIBLE){
-                    map2.setVisibility(View.GONE);
-                } else {map2.setVisibility(View.VISIBLE);}
+                map2.setVisibility(map2.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+                map1.setVisibility(View.GONE);
+                map3.setVisibility(View.GONE);
             }
         });
 
         card3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(map3.getVisibility()==View.VISIBLE){
-                    map3.setVisibility(View.GONE);
-                } else {map3.setVisibility(View.VISIBLE);}
+                map3.setVisibility(map3.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+                map1.setVisibility(View.GONE);
+                map2.setVisibility(View.GONE);
             }
         });
 
